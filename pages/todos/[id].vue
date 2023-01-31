@@ -49,10 +49,14 @@ const todo = computed((): Todo | null => {
 .item {
   display: grid;
   grid-template-columns: 80px 1fr;
-  align-items: center;
+  align-items: start;
   gap: 10px;
+  margin: 20px 0;
 }
 .item-title {
   font-weight: bold;
+}
+.item-content {
+  word-break: break-all;
 }
 </style>

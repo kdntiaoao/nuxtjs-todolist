@@ -4,15 +4,6 @@ const todosStore = useTodosStore();
 if (process.client) {
   todosStore.prepareTodos();
 }
-
-const addTodo = () => {
-  const todo = {
-    timestamp: Date.now(),
-    title: 'hoge',
-    content: 'Hello, World!',
-  };
-  todosStore.addTodo(todo);
-};
 </script>
 
 <template>
@@ -45,8 +36,8 @@ const addTodo = () => {
           </NuxtLink>
         </li>
       </ul>
-      <button type="button" @click="addTodo">タスクを追加</button>
     </ClientOnly>
+    <NuxtLink to="/todos/create" class="btn-primary">タスクを追加</NuxtLink>
   </div>
 </template>
 
@@ -66,7 +57,7 @@ const addTodo = () => {
   display: block;
 }
 .todo-item:hover {
-  box-shadow: 0 1px 8px rgb(192, 162, 199, 0.4),
+  box-shadow: 0 1px 8px rgba(192, 162, 199, 0.4),
     0 2px 8px rgb(192, 162, 199, 0.2);
 }
 .item {
@@ -77,5 +68,28 @@ const addTodo = () => {
 }
 .item-title {
   font-weight: bold;
+}
+.item-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.btn-primary {
+  display: grid;
+  place-content: center;
+  padding: 10px 8px 8px;
+  width: 160px;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #a59aca;
+  font-weight: bold;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 1px 4px #a59aca;
+  transition: box-shadow 0.2s, background-color 0.2s;
+}
+.btn-primary:hover {
+  background-color: #9a89cf;
+  box-shadow: 0 1px 8px #a59aca;
 }
 </style>

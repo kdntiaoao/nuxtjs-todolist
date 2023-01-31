@@ -1,9 +1,14 @@
-<script setup>
-import { useTodosStore } from '~~/stores/todos';
+<script setup lang="ts">
+import { format } from 'date-fns';
+import { useTodosStore } from '@/stores/todos';
+
 const todosStore = useTodosStore();
 if (process.client) {
   todosStore.prepareTodos();
 }
+
+const formatDate = (timestamp: number): string =>
+  format(timestamp, 'M月d日 H:mm');
 </script>
 
 <template>
@@ -26,7 +31,7 @@ if (process.client) {
             <dl class="list">
               <div class="item">
                 <dt class="item-title">日時</dt>
-                <dd class="item-content">{{ todo.timestamp }}</dd>
+                <dd class="item-content">{{ formatDate(todo.timestamp) }}</dd>
               </div>
               <div class="item">
                 <dt class="item-title">タイトル</dt>

@@ -20,5 +20,9 @@ export const useTodosStore = defineStore('todos', {
       this.todos.push(todo);
       sessionStorage.setItem('todos', JSON.stringify(this.todos));
     },
+    removeTodo(index: number) {
+      this.todos.splice(index, 1);
+      sessionStorage.setItem('todos', JSON.stringify(this.todos));
+    },
   },
 });
